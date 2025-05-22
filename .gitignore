@@ -1,0 +1,22 @@
+# 忽略 PyCharm 自动生成的文件
+.idea/
+*.iml
+
+# 忽略 Python 编译文件
+__pycache__/
+*.pyc
+
+# 忽略环境配置文件
+/data/env.ini
+
+# 忽略报告文件夹（如果包含大量生成文件）
+/reports/
+
+# 忽略报告文件夹（如果包含大量生成文件）
+/html_reports/
+
+# 忽略 data 文件夹及其所有内容
+/data/
+
+# 新增：忽略 automation_test_roadmap.md 文件
+automation_test_roadmap.md
