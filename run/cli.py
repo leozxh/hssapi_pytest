@@ -1,8 +1,8 @@
 # 导入 argparse 模块，用于解析命令行参数
 import argparse
-
-# 从 run.runner 模块中导入 run_all 函数，该函数可能用于运行所有测试
-from runner import run_all
+from custom_runner import run_tests  # 替换为实际运行测试的模块
+from common.email_utils import send_email_report
+import json
 
 # 定义 main 函数，作为程序的入口点
 def main():
@@ -15,10 +15,19 @@ def main():
     # 解析命令行参数，并将结果存储在 args 变量中
     args = parser.parse_args()
 
-    # TODO: 根据参数控制是否发送邮件
-    # 这里需要根据 args.no_email 的值来决定是否发送邮件
-    # 如果 args.no_email 为 True，则不发送邮件；否则发送邮件
-    run_all()
+    # 运行测试
+    run_tests()
+
+    # 如果没有 --no-email 参数，则发送邮件
+    if not args.no_email:
+        # 加载邮件配置
+        email_config_path = "../data/email_config.json"
+        with open(email_config_path, 'r', encoding='utf-8') as f:
+            email_config = json.load(f)
+        # 发送邮件报告
+        send_email_report(email_config)
+    else:
+        print("[INFO] 邮件发送已跳过")
 
 # 检查是否直接运行该脚本，如果是，则调用 main 函数
 if __name__ == "__main__":

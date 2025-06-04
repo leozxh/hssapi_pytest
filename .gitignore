@@ -10,7 +10,7 @@ __pycache__/
 /data/env.ini
 
 # 忽略报告文件夹（如果包含大量生成文件）
-/reports/
+/allure_output/
 
 # 忽略报告文件夹（如果包含大量生成文件）
 /html_reports/
@@ -18,5 +18,6 @@ __pycache__/
 # 忽略 data 文件夹及其所有内容
 /data/
 
-# 新增：忽略 automation_test_roadmap.md 文件
-automation_test_roadmap.md
+#忽略日志文件
+/run/test_execution.log
+/run/allure_full_report.zip
